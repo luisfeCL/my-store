@@ -1,3 +1,10 @@
+ <h1>Ngmodel</h1>
+<p>Nombre {{person.name}}</p> 
+<input type="text" required #nameInput="ngModel" [(ngModel)] = "person.name">
+<p>Valid: {{nameInput.valid}}</p>
+<input type="number" required #ageInput="ngModel" [(ngModel)] = "person.age"  max ="18" min="10">
+<p>Valid: {{ageInput.valid}}</p>
+
 
 
 <h1>Propiedades</h1>
@@ -18,3 +25,39 @@
 <p> 3 + 3 = {{ 3 + 3 }}</p>
 <h3> hola, soy {{ name }} y tengo {{ age  }}</h3>
 <img src="{{ img }}" alt="imagen">
+
+<hr>
+
+
+<ng-template #myBlock>
+    <p>Bloque de else</p>
+</ng-template>
+
+
+<h1>ngFor (iteraciones)</h1>
+
+<input type="text" required [(ngModel)]="newName">
+<button (click)="addName()">Add name</button>
+
+<ul>
+    <li *ngIf="names.length === 0"> No hay nombres que mostrar en la lista</li>
+    <li *ngFor="let name of names; index as i">
+        {{i}} {{name}}
+        <button (click)="deleteName(i)">Delete</button>
+    </li>
+</ul>
+
+
+<hr>
+
+<h1>*ngFor para arrays</h1>
+
+<div>
+    <div *ngFor="let product of products">
+        <img [src]="product.image" width="250px" alt="image">
+        <h2> {{ product.price }} </h2>
+        <p>{{ product.name }}</p>
+    </div>
+</div>
+
+
